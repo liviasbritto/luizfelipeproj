@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Interativa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 20px;
+        }
+        #story {
+            margin-bottom: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>A Aventura na Floresta Mágica</h1>
+<div id="story">
+    <p id="text">Você está em uma floresta mágica. Existem dois caminhos à sua frente: um à esquerda, coberto de flores brilhantes, e outro à direita, envolto em sombras. Qual você escolherá?</p>
+</div>
+
+<button onclick="choose('left')">Caminho à Esquerda</button>
+<button onclick="choose('right')">Caminho à Direita</button>
+
+<script>
+    function choose(direction) {
+        const storyText = document.getElementById("text");
+
+        if (direction === 'left') {
+            storyText.innerHTML = "Você seguiu o caminho à esquerda e encontrou um lago magnífico, onde uma sereia aparece e lhe oferece um desejo. O que você deseja?";
+            updateButtons(['Desejo de riqueza', 'Desejo de sabedoria']);
+        } else if (direction === 'right') {
+            storyText.innerHTML = "Você foi pela direita e entrou em uma caverna sombria. Um dragão acorda e pergunta se você deseja lutar ou negociar.";
+            updateButtons(['Lutar com o dragão', 'Negociar com o dragão']);
+        }
+    }
+
+    function updateButtons(options) {
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach((button, index) => {
+            if (index < options.length) {
+                button.innerText = options[index];
+                button.style.display = "inline-block";
+            } else {
+                button.style.display = "none";
+            }
+        });
+    }
+</script>
+</body>
+</html>
